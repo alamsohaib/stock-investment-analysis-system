@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>PSX Investment Analyst</title>
+  <link rel="stylesheet" href="/static/styles.css" />
+</head>
+<body>
+  <!-- ===== Header ===== -->
+  <header class="topbar">
+    <div class="brand">
+      <div class="logo">PSX</div>
+      <div>
+        <h1>Investment Analyst</h1>
+        <p class="tagline">Pakistan Stock Exchange — plain-English stock analysis</p>
+      </div>
+    </div>
+    <div class="topbar-right">
+      <div class="search">
+        <input id="searchInput" type="text" placeholder="Search any stock (e.g. HBL, ENGRO, Lucky)…" autocomplete="off" />
+        <div id="searchResults" class="search-results hidden"></div>
+      </div>
+      <button id="scanBtn" class="btn btn-primary">Run Analysis</button>
+    </div>
+  </header>
+
+  <!-- ===== Honesty / disclaimer banner ===== -->
+  <div class="disclaimer">
+    <strong>Read me first:</strong> This tool uses <em>free, delayed</em> public data from the PSX Data Portal.
+    It is an educational research aid, <strong>not financial advice</strong>. Some professional data (full financial
+    statements, broker activity) isn't available for free, so parts of the analysis are limited — the app tells you
+    exactly where. Always do your own research and consider a licensed advisor before investing.
+  </div>
+
+  <main class="container">
+    <!-- ===== Status strip ===== -->
+    <section id="statusStrip" class="status-strip">
+      <span id="statusText">Click <strong>Run Analysis</strong> to scan the market.</span>
+      <span id="statusMeta" class="muted"></span>
+    </section>
+
+    <!-- ===== Scan progress ===== -->
+    <section id="progressBox" class="progress-box hidden">
+      <div class="spinner"></div>
+      <div>
+        <div id="progressTitle">Scanning the Pakistan Stock Exchange…</div>
+        <div id="progressLog" class="progress-log muted"></div>
+      </div>
+    </section>
+
+    <!-- ===== Legend ===== -->
+    <section class="legend">
+      <span class="legend-title">How to read the data:</span>
+      <span class="badge badge-actual">Actual</span> real market data
+      <span class="badge badge-calculated">Calculated</span> computed by the app
+      <span class="badge badge-assumption">Assumption</span> an input we chose
+      <span class="badge badge-opinion">Opinion</span> a judgement
+    </section>
+
+    <!-- ===== Opportunities tabs ===== -->
+    <section id="resultsSection" class="hidden">
+      <div class="tabs">
+        <button class="tab active" data-tab="top">Top Opportunities</button>
+        <button class="tab" data-tab="value">Trading Below Fair Value</button>
+      </div>
+
+      <div class="table-wrap">
+        <table id="oppTable" class="opp-table">
+          <thead>
+            <tr>
+              <th>#</th><th>Symbol</th><th class="hide-sm">Company</th>
+              <th class="num">Price</th><th class="num">Fair Value</th>
+              <th class="num">Margin of Safety</th>
+              <th class="num">Score</th><th>Recommendation</th><th class="num hide-sm">Data</th>
+            </tr>
+          </thead>
+          <tbody id="oppBody"></tbody>
+        </table>
+      </div>
+      <p class="muted small" id="tableFootnote"></p>
+    </section>
+  </main>
+
+  <!-- ===== Detail drawer ===== -->
+  <div id="drawerOverlay" class="overlay hidden"></div>
+  <aside id="drawer" class="drawer hidden">
+    <button id="drawerClose" class="drawer-close" aria-label="Close">&times;</button>
+    <div id="drawerContent"></div>
+  </aside>
+
+  <footer class="footer">
+    <span>Data: PSX Data Portal (dps.psx.com.pk) — public, delayed.</span>
+    <span>Analysis computed locally. Not financial advice.</span>
+  </footer>
+
+  <script src="/static/app.js"></script>
+</body>
+</html>

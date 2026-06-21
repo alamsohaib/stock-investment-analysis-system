@@ -1,0 +1,7 @@
+# cached PSX data (safe to delete / regenerate)
+data/cache/
+# python
+__pycache__/
+*.pyc
+.venv/
+venv/

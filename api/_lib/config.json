@@ -1,0 +1,39 @@
+{
+  "_comment": "PSX Investment Analysis System — settings you can safely edit.",
+  "scoring_weights": {
+    "fundamental": 0.40,
+    "technical": 0.25,
+    "fair_value": 0.20,
+    "broker": 0.10,
+    "news_sentiment": 0.05
+  },
+  "universe": {
+    "exclude_debt_instruments": true,
+    "exclude_etfs": false,
+    "min_price": 1.0,
+    "min_daily_volume": 25000,
+    "max_symbols_full_scan": 120
+  },
+  "fair_value": {
+    "discount_rate": 0.20,
+    "terminal_growth": 0.04,
+    "max_target_pe": 15.0,
+    "min_target_pe": 4.0,
+    "max_fair_to_price": 2.5,
+    "suspect_low_pe": 2.5
+  },
+  "quality": {
+    "_comment": "Stocks failing these are tagged speculative, penalised, and capped at 'Accumulate' so thin/risky names don't top the list.",
+    "min_quality_price": 3.0,
+    "min_free_float_pct": 15.0,
+    "min_market_cap_bn": 2.0,
+    "speculation_penalty_per_flag": 6.0
+  },
+  "data": {
+    "cache_minutes_snapshot": 10,
+    "cache_minutes_company": 60,
+    "cache_minutes_history": 720,
+    "request_timeout_seconds": 25,
+    "max_parallel_requests": 8
+  }
+}

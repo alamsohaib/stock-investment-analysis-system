@@ -5,3 +5,9 @@ __pycache__/
 *.pyc
 .venv/
 venv/
+
+# node / vite (React frontend)
+node_modules/
+dist/
+.vercel/
+npm-debug.log*

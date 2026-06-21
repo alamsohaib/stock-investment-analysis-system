@@ -1,0 +1,2 @@
+# PSX Analyst backend is standard-library only — no third-party packages.
+# This file's presence tells Vercel to use the Python runtime for /api/*.py.
